@@ -14,7 +14,7 @@ COPY package*.json ./
 COPY . .
 
 # Clean npm cache; added to fix an issue with the install process
-RUN npm cache clean --force
+RUN npm cache clean --force && npm install -g npm@8.5.5
 
 # Install all dependencies
 RUN npm ci
@@ -37,7 +37,7 @@ WORKDIR /parse-server
 COPY package*.json ./
 
 # Clean npm cache; added to fix an issue with the install process
-RUN npm cache clean --force
+RUN npm cache clean --force && npm install -g npm@8.5.5
 RUN npm ci --production --ignore-scripts
 
 COPY bin bin

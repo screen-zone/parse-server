@@ -1,0 +1,30 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data-db:/data/db
+
+  server:
+    image: screen-zone/parse-server
+    volumes:
+      - ./cloud:/parse-server/cloud:ro
+      - ./config:/parse-server/config:ro
+    ports:
+      - 1337:1337
+    links:
+      - mongo
+    environment:
+      - PARSE_SERVER_DATABASE_URI=mongodb://mongo:27017/dev
+    entrypoint: node ./bin/parse-server ./config/config.json
+
+  dashboard:
+    image: parseplatform/parse-dashboard
+    volumes:
+      - ./config:/parse-server/config:ro
+    ports:
+      - 4040:4040
+    environment:
+      - PARSE_DASHBOARD_ALLOW_INSECURE_HTTP=1
+    entrypoint: node Parse-Dashboard/index.js --config /parse-server/config/dashboard-config.json --dev

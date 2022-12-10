@@ -1,7 +1,7 @@
 {
   "name": "parse-server",
   "version": "5.4.0",
-  "description": "An express module providing a Parse-compatible API server",
+  "description": "An express module providing a Parse-compatible API server with additional functionality",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "@graphql-tools/merge": "8.3.6",
     "@graphql-tools/schema": "9.0.4",
     "@parse/fs-files-adapter": "1.2.2",
+    "@parse/s3-files-adapter": "1.6.2",
     "@parse/push-adapter": "4.1.2",
     "bcryptjs": "2.4.3",
     "body-parser": "1.20.1",
