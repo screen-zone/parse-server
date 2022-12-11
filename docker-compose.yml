@@ -7,7 +7,7 @@ services:
       - ./data-db:/data/db
 
   server:
-    image: screen-zone/parse-server
+    image: ghcr.io/screen-zone/parse-server
     volumes:
       - ./cloud:/parse-server/cloud:ro
       - ./config:/parse-server/config:ro
